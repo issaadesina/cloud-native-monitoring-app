@@ -12,7 +12,13 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(ea6cab40-480d-4227-be79-f3adda6d4138)'
+    appType: 'webApp'
+    WebAppName: 'devops'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
